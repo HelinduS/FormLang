@@ -1,0 +1,35 @@
+<form name="Registration">
+<!-- Meta: author = Helindu -->
+<label>fullName: <input type="text" name="fullName" required></label><br>
+<label>about:<br><textarea name="about" rows="5" cols="40">Type here...</textarea></label><br>
+<label>age: <input type="number" name="age" required min="1" max="99"></label><br>
+<label>email: <input type="email" name="email" pattern=".+@.+\\..+"></label><br>
+<label>dob: <input type="date" name="dob" required min="2000-01-01" max="2020-12-31"></label><br>
+<label>gender:</label><br>
+<input type="radio" name="gender" value="Male"> Male<br>
+<input type="radio" name="gender" value="Female"> Female<br>
+<input type="radio" name="gender" value="Other"> Other<br>
+<label><input type="checkbox" name="Agree_to_terms" checked> Agree_to_terms</label><br>
+<label>country: <select name="country" required>
+<option value="Sri Lanka">Sri Lanka</option>
+<option value="India">India</option>
+<option value="Other">Other</option>
+</select></label><br>
+<label>password: <input type="password" name="password" required pattern=".{8,}"></label><br>
+<label>results: <input type="file" name="results" required accept=".pdf,.doc"></label><br>
+<button type="submit">Submit</button>
+</form>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.querySelector('form');
+  if(form) {
+    form.addEventListener('submit', function(e) {
+      var age = document.getElementsByName('age')[0]?.value;
+      if (age !== undefined && age < 18) {
+        alert('You must be at least 18.');
+        e.preventDefault();
+      }
+    });
+  }
+});
+</script>

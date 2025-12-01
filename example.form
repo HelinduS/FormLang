@@ -1,0 +1,23 @@
+
+
+form Registration {
+    meta author = "Helindu";
+    section PersonalDetails {
+        field fullName: text required;
+        field about: textarea rows=5 cols=40 default="Type here...";
+        field age: number min=1 max=99 required;
+        field email: email pattern=".+@.+\\..+" required;
+        field dob: date min="2000-01-01" max="2020-12-31" required;
+        field gender: radio ["Male", "Female", "Other"] required;
+        field Agree_to_terms: checkbox default=true;
+        field country: dropdown options=["Sri Lanka", "India", "Other"] required;
+        field password: password required pattern=".{8,}";
+        field results: file accept=".pdf,.doc" required;
+        
+    }
+    validate {
+        if age < 18 {
+            error "You must be at least 18.";
+        }
+    }
+}
